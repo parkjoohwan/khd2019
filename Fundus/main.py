@@ -27,7 +27,7 @@ from dataprocessing import image_preprocessing, dataset_loader
 
 
 ## setting values of preprocessing parameters
-RESIZE = 10.
+RESIZE = 12.
 RESCALE = True
 
 
@@ -123,6 +123,16 @@ if __name__ == '__main__':
         train_generator = train_datagen.flow(x=X, y=Y, shuffle= False, batch_size=batch_size, seed=seed)
         # then flow and fit_generator....
         '''
+
+        kwargs = dict(
+            rotation_range=0,
+            zoom_range=0.1,
+            width_shift_range=0.2,
+            height_shift_range=0.2,
+            horizontal_flip=True,
+            vertical_flip=True,
+            fill_mode="nearest"
+        )
 
         """ Callback """
         monitor = 'categorical_accuracy'
